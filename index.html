@@ -9,11 +9,11 @@
 <meta property="og:title" content="PeptideRadar — Find Trusted Peptide Suppliers by Country"/>
 <meta property="og:description" content="Find verified, community-reviewed peptide suppliers in your country. No ads, no paid placements."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://peptideradar.netlify.app"/>
+<meta property="og:url" content="https://peptide-radar.netlify.app/"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PeptideRadar"/>
 <meta name="twitter:description" content="The trusted directory for peptide suppliers worldwide."/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💊</text></svg>"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%235dd98a' stroke-width='6'/><circle cx='50' cy='50' r='29' fill='none' stroke='%235dd98a' stroke-width='4' opacity='.6'/><circle cx='50' cy='50' r='14' fill='none' stroke='%235dd98a' stroke-width='3' opacity='.35'/><line x1='50' y1='50' x2='84' y2='18' stroke='%235dd98a' stroke-width='5' stroke-linecap='round'/><circle cx='50' cy='50' r='5' fill='%235dd98a'/></svg>"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -193,7 +193,7 @@ footer span{font-size:12px;color:var(--text3);}
 <body>
 
 <nav>
-  <div class="logo" onclick="showPage('landing')">Peptide<span>Radar</span></div>
+  <div class="logo" onclick="showPage('landing')"><svg width="22" height="22" viewBox="0 0 100 100" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="50" cy="50" r="44" stroke="#5dd98a" stroke-width="6"/><circle cx="50" cy="50" r="29" stroke="#5dd98a" stroke-width="4" opacity=".6"/><circle cx="50" cy="50" r="14" stroke="#5dd98a" stroke-width="3" opacity=".35"/><line x1="50" y1="50" x2="84" y2="18" stroke="#5dd98a" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="50" r="5" fill="#5dd98a"/></svg>Peptide<span>Radar</span></div>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('landing');return false;">Home</a></li>
     <li><a href="#" onclick="showPage('directory');return false;">Directory</a></li>
@@ -288,7 +288,7 @@ footer span{font-size:12px;color:var(--text3);}
   <div class="form-wrap">
     <h2>Get in touch</h2>
     <p>Have a question, found incorrect info, or want to report a supplier? We're here.</p>
-    <form action="https://formspree.io/f/xzdywbnw" method="POST">
+    <form id="contact-form">
       <div class="form-group">
         <label>Your name</label>
         <input type="text" name="name" placeholder="John Smith" required/>
@@ -312,6 +312,7 @@ footer span{font-size:12px;color:var(--text3);}
         <textarea name="message" placeholder="Tell us what's on your mind..." required></textarea>
       </div>
       <button type="submit" class="submit-btn">Send message</button>
+      <div id="contact-success" class="success-msg">Thanks! We'll get back to you soon.</div>
     </form>
   </div>
 </div>
@@ -322,7 +323,7 @@ footer span{font-size:12px;color:var(--text3);}
     <h2>List your supplier</h2>
     <p>Get your business in front of buyers searching for trusted peptide suppliers in your country. Free, no strings attached.</p>
     <hr class="section-divider"/>
-    <form action="https://formspree.io/f/xpqknwaa" method="POST">
+    <form id="signup-form">
       <div class="form-group">
         <label>Business name</label>
         <input type="text" name="business_name" placeholder="Your company name" required/>
@@ -374,6 +375,7 @@ footer span{font-size:12px;color:var(--text3);}
         <textarea name="description" placeholder="Years in operation, quality standards, anything else we should know..."></textarea>
       </div>
       <button type="submit" class="submit-btn">Submit for review →</button>
+      <div id="signup-success" class="success-msg">Submitted! We'll review your listing and be in touch.</div>
     </form>
   </div>
 </div>
@@ -386,6 +388,7 @@ footer span{font-size:12px;color:var(--text3);}
     <a href="#" onclick="showPage('contact');return false;">Contact</a>
     <a href="#" onclick="showPage('signup');return false;">List supplier</a>
   </div>
+  <a href="mailto:peptideradar@gmail.com" style="font-size:12px;color:var(--text3);text-decoration:none;">peptideradar@gmail.com</a>
   <span>© 2026 PeptideRadar</span>
   <div class="disclaimer">For informational and research purposes only. PeptideRadar does not sell, endorse, or recommend any specific product for human use. Always consult a licensed healthcare professional. Laws regarding peptides vary by country — users are responsible for compliance with local regulations.</div>
 </footer>
@@ -470,6 +473,18 @@ function showPage(id){
   window.scrollTo(0,0);
 }
 
+
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  fetch('https://formspree.io/f/mrerdbrz',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}})
+    .then(r=>{if(r.ok){e.target.reset();document.getElementById('contact-success').style.display='block';}});
+});
+
+document.getElementById('signup-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  fetch('https://formspree.io/f/xjgjzkjg',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}})
+    .then(r=>{if(r.ok){e.target.reset();document.getElementById('signup-success').style.display='block';}});
+});
 
 renderFilters();
 renderGrid();

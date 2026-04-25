@@ -468,8 +468,11 @@ function buildCard(s){
   h+='<div class="scard-top"><div class="scard-name">'+s.name+'</div>'+(s.verified?'<div class="vbadge">Verified</div>':'')+'</div>';
   h+='<div class="scard-country">'+s.flag+' '+s.country+(s.note?' <span style="font-size:11px;color:var(--green);margin-left:6px;">'+s.note+'</span>':'')+'</div>';
   var judgeLink=s.judgeMe?' &nbsp;<span style="color:var(--green);font-size:10px;">✓ Judge.me</span>':'';
-  var ratingText=s.reviews>0?'<span class="rating-text">'+s.rating+' ('+s.reviews+' reviews)'+judgeLink+'</span>':'<span class="rating-text">No reviews yet</span>';
-  h+='<div class="stars">'+renderStars(s.rating)+ratingText+'</div>';
+  if(s.reviews>0){
+    h+='<div class="stars">'+renderStars(s.rating)+'<span class="rating-text">'+s.rating+' ('+s.reviews+' reviews)'+judgeLink+'</span></div>';
+  }else{
+    h+='<div style="margin-bottom:12px;"><span class="rating-text">No reviews yet</span></div>';
+  }
   if(s.featuredReview){
     h+='<div onclick="event.stopPropagation()" style="margin-bottom:12px;">';
     h+='<div style="font-size:12px;color:var(--text2);font-style:italic;padding:8px 12px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(93,217,138,0.3);border-radius:0 6px 6px 0;margin-bottom:6px;">"'+s.featuredReview+'"</div>';
@@ -522,6 +525,7 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  document.querySelectorAll('.success-msg').forEach(function(el){el.style.display='none';});
 }
 
 function toggleNav(){document.getElementById('nav-links').classList.toggle('open');}

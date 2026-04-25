@@ -42,6 +42,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-cta{background:var(--green);color:#0a0a0f;border:none;padding:10px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.2s;}
 .nav-cta:hover{opacity:0.85;}
 
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.2s;}
+.nav-cta-mobile{display:none;}
+
 /* PAGES */
 .page{display:none;min-height:100vh;padding-top:65px;}
 .page.active{display:block;}
@@ -168,11 +173,15 @@ footer span{font-size:12px;color:var(--text3);}
 
 /* ── MOBILE ── */
 @media(max-width:640px){
-  nav{padding:0.85rem 1.25rem;}
+  nav{padding:0.85rem 1.25rem;flex-wrap:wrap;}
   .logo{font-size:22px;}
-  .nav-links{gap:1.2rem;}
-  .nav-links a{font-size:13px;}
+  .hamburger{display:flex;}
   .nav-cta{display:none;}
+  .nav-links{display:none;flex-direction:column;width:100%;gap:0;padding:0.5rem 0;}
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:14px;padding:0.6rem 0;border-bottom:0.5px solid var(--border);}
+  .nav-cta-mobile{display:block;}
+  .nav-cta-mobile a{color:var(--green) !important;}
   .hero{padding:3.5rem 1.5rem 2rem;}
   h1{font-size:clamp(28px,8vw,38px);transform:scaleX(1);letter-spacing:-0.5px;}
   .hero-sub{font-size:14px;}
@@ -199,12 +208,16 @@ footer span{font-size:12px;color:var(--text3);}
 
 <nav>
   <div class="logo" onclick="showPage('landing')"><svg width="22" height="22" viewBox="0 0 100 100" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="50" cy="50" r="44" stroke="#5dd98a" stroke-width="6"/><circle cx="50" cy="50" r="29" stroke="#5dd98a" stroke-width="4" opacity=".6"/><circle cx="50" cy="50" r="14" stroke="#5dd98a" stroke-width="3" opacity=".35"/><line x1="50" y1="50" x2="84" y2="18" stroke="#5dd98a" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="50" r="5" fill="#5dd98a"/></svg>Peptide<span>Radar</span></div>
-  <ul class="nav-links">
-    <li><a href="#" onclick="showPage('landing');return false;">Home</a></li>
-    <li><a href="#" onclick="showPage('directory');return false;">Directory</a></li>
-    <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showPage('landing');closeNav();return false;">Home</a></li>
+    <li><a href="#" onclick="showPage('directory');closeNav();return false;">Directory</a></li>
+    <li><a href="#" onclick="showPage('contact');closeNav();return false;">Contact</a></li>
+    <li class="nav-cta-mobile"><a href="#" onclick="showPage('signup');closeNav();return false;">List your supplier</a></li>
   </ul>
   <button class="nav-cta" onclick="showPage('signup')">List your supplier</button>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ══════════════ LANDING PAGE ══════════════ -->
@@ -453,7 +466,7 @@ function renderGrid(){
   });
   if(!filtered.length){grid.innerHTML='<div class="no-results" style="grid-column:1/-1;padding:5rem 2rem;text-align:center;"><p style="font-size:22px;font-weight:700;margin-bottom:10px;color:var(--text);">Suppliers coming soon</p><p style="font-size:14px;color:var(--text3);max-width:320px;margin:0 auto 1.5rem;">We\'re currently verifying our first batch of suppliers. Check back soon or get notified when your country goes live.</p><button class="btn-primary" onclick="showPage(\'landing\')" style="font-size:13px;padding:10px 22px;">Join the waitlist →</button></div>';return;}
   grid.innerHTML = filtered.map(s=>`
-    <div class="scard">
+    <div class="scard" onclick="trackClick('${s.name}','${s.url}')">
       <div class="scard-top">
         <div class="scard-name">${s.name}</div>
         ${s.verified?'<div class="vbadge">Verified</div>':''}
@@ -480,6 +493,9 @@ function showPage(id){
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
+
+function toggleNav(){document.getElementById('nav-links').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-links').classList.remove('open');}
 
 
 document.getElementById('waitlist-form').addEventListener('submit',function(e){

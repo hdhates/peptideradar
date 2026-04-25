@@ -461,7 +461,7 @@ function renderGrid(){
       <div class="scard-country">${s.flag} ${s.country}${s.note?` <span style="font-size:11px;color:var(--green);margin-left:6px;">${s.note}</span>`:''}</div>
       <div class="stars">${renderStars(s.rating)}${s.reviews > 0 ? `<span class="rating-text">${s.rating}.0 (${s.reviews} reviews)</span>` : '<span class="rating-text">No reviews yet</span>'}</div>
       <div class="tags">${s.tags.map(t=>`<div class="tag">${t}</div>`).join('')}</div>
-      ${s.peptides&&s.peptides.length?`<div style="font-size:11px;color:var(--text3);margin-bottom:12px;"><span style="color:var(--text2);font-weight:500;">Top peptides:</span> ${s.peptides.join(' · ')}</div>`:''}
+      ${s.peptides&&s.peptides.length?`<div style="margin-bottom:14px;"><div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;">Top Peptides</div><div style="display:flex;flex-wrap:wrap;gap:5px;">${s.peptides.map(p=>`<span style="font-size:11px;color:var(--text2);background:rgba(93,217,138,0.06);border:0.5px solid rgba(93,217,138,0.15);padding:2px 9px;border-radius:4px;">${p}</span>`).join('')}</div></div>`:''}
       <div class="scard-footer">
         <span class="scard-meta">Ships in ${s.shipping}</span>
         <button class="visit-btn" onclick="trackClick('${s.name}', '${s.url}')">Visit site →</button>

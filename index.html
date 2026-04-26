@@ -39,6 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:15px;font-weight:500;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text);}
+.nav-links a.active{color:var(--green);}
 .nav-cta{background:var(--green);color:#0a0a0f;border:none;padding:10px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.2s;}
 .nav-cta:hover{opacity:0.85;}
 
@@ -577,6 +578,11 @@ function showPage(id){
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
   document.querySelectorAll('.success-msg').forEach(function(el){el.style.display='none';});
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+  var map={landing:'home',directory:'directory',contact:'contact',signup:'signup'};
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    if(a.textContent.trim().toLowerCase().replace('list your supplier','signup')===map[id]||a.getAttribute('onclick').includes("'"+id+"'"))a.classList.add('active');
+  });
 }
 
 function toggleNav(){document.getElementById('nav-links').classList.toggle('open');}

@@ -48,8 +48,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links a{color:var(--text2);text-decoration:none;font-size:15px;font-weight:500;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text);}
 .nav-links a.active{color:var(--green);}
-.nav-cta{background:linear-gradient(90deg,#0a0a0f 50%,var(--green) 50%);background-size:200% 100%;background-position:right center;color:#0a0a0f;border:0.5px solid var(--green);padding:11px 24px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background-position 0.4s ease,color 0.4s,transform 0.15s;letter-spacing:0.1px;}
-@media(hover:hover){.nav-cta:hover{background-position:left center;color:var(--green);transform:translateY(-1px);}}
+.nav-cta{background:var(--green);color:#0a0a0f;border:none;padding:12px 28px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity 0.2s,transform 0.15s;letter-spacing:0.1px;}
+@media(hover:hover){.nav-cta:hover{opacity:0.85;transform:translateY(-1px);}}
 
 /* HAMBURGER */
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
@@ -465,7 +465,7 @@ footer span{font-size:12px;color:var(--text3);}
 <div id="verify" class="page">
   <div class="form-wrap" style="max-width:640px;">
     <div class="badge" style="margin-bottom:1rem;">Our process</div>
-    <h2 style="color:var(--green);margin-bottom:0.5rem;">How we verify</h2>
+    <h2 style="color:var(--green);margin-bottom:0.5rem;">How We Verify Suppliers</h2>
     <p style="margin-bottom:2.5rem;">Every supplier on PeptideRadar goes through the same process before going live. No shortcuts, no exceptions.</p>
 
     <div style="position:relative;display:flex;flex-direction:column;gap:0;">

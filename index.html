@@ -631,21 +631,19 @@ function renderGrid(){
 
 function normalize(s){return s.toLowerCase().replace(/[^a-z0-9]/g,'');}
 function editDist(a,b){
-  var la=a.length,lb=b.length;
-  if(Math.abs(la-lb)>5)return 99;
-  var d=[];
-  for(var i=0;i<=la;i++){d[i]=[i];for(var j=1;j<=lb;j++)d[i][j]=i?0:j;}
-  for(var i=1;i<=la;i++)for(var j=1;j<=lb;j++){
-    var c=a[i-1]===b[j-1]?0:1;
-    d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);
-    if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+c);
+  var m=a.length,n=b.length,i,j,prev,tmp,v=[];
+  if(Math.abs(m-n)>4)return 99;
+  for(i=0;i<=n;i++)v[i]=i;
+  for(i=1;i<=m;i++){
+    prev=v[0];v[0]=i;
+    for(j=1;j<=n;j++){tmp=v[j];v[j]=a[i-1]===b[j-1]?prev:1+Math.min(prev,v[j],v[j-1]);prev=tmp;}
   }
-  return d[la][lb];
+  return v[n];
 }
 function fuzzyMatch(term,str){
   var n=normalize(term),s=normalize(str);
   if(n.length<4)return false;
-  if(s.includes(n))return true;
+  if(s.includes(n)||n.includes(s))return true;
   return editDist(n,s)<=(n.length>=5?2:1);
 }
 function filterSuppliers(){

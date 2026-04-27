@@ -642,9 +642,12 @@ function editDist(a,b){
 }
 function fuzzyMatch(term,str){
   var n=normalize(term),s=normalize(str);
-  if(n.length<4)return false;
+  if(n.length<3)return false;
   if(s.includes(n)||n.includes(s))return true;
-  return editDist(n,s)<=(n.length>=5?2:1);
+  var tol=n.length>=5?2:1;
+  if(editDist(n,s)<=tol)return true;
+  var prefix=s.substring(0,Math.min(s.length,n.length+tol));
+  return editDist(n,prefix)<=tol;
 }
 function filterSuppliers(){
   searchTerm = document.getElementById('search-input').value.toLowerCase();

@@ -784,11 +784,11 @@ renderFilters();
 renderGrid();
 updateStats();
 
-window.addEventListener('scroll',function(){
+document.addEventListener('scroll',function(){
   const btn=document.getElementById('back-to-top');
-  if(window.scrollY>300)btn.classList.add('visible');
+  if(document.documentElement.scrollTop>300)btn.classList.add('visible');
   else btn.classList.remove('visible');
-});
+},true);
 </script>
 </body>
 </html>

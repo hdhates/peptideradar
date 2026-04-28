@@ -586,7 +586,7 @@ const suppliers = [
 
 
 const codeMap={"United States":"us","Canada":"ca","Germany":"de","France":"fr","Spain":"es","Italy":"it","Netherlands":"nl","Belgium":"be","Austria":"at","Sweden":"se","Denmark":"dk","Finland":"fi","Norway":"no","Poland":"pl","Czech Republic":"cz","Slovakia":"sk","Hungary":"hu","Romania":"ro","Bulgaria":"bg","Croatia":"hr","Slovenia":"si","Greece":"gr","Portugal":"pt","Ireland":"ie","Switzerland":"ch","Luxembourg":"lu","Estonia":"ee","Latvia":"lv","Lithuania":"lt","Malta":"mt","Cyprus":"cy","UK":"gb","United Kingdom":"gb","Australia":"au","Brazil":"br","India":"in","Indonesia":"id","Israel":"il","Japan":"jp","Serbia":"rs","South Africa":"za","United Arab Emirates":"ae","Bermuda":"bm","Liechtenstein":"li","Monaco":"mc"};
-function flagImg(country,h){var c=codeMap[country];return c?'<img src="https://flagcdn.com/'+h+'/'+c+'.png" style="vertical-align:middle;border-radius:2px;margin-right:4px;" alt="'+country+'" loading="lazy">'  :'';}
+function flagEmoji(country){var c=codeMap[country];if(!c)return '';return [...c.toUpperCase()].map(l=>String.fromCodePoint(0x1F1E6+l.charCodeAt(0)-65)).join('')+' ';}
 const allShipCountries=[...new Set(suppliers.flatMap(s=>s.shipsTo||[s.country]))].sort();
 const europeanCountries=new Set(["Albania","Andorra","Austria","Belarus","Belgium","Bosnia and Herzegovina","Bulgaria","Croatia","Cyprus","Czech Republic","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Iceland","Ireland","Italy","Kosovo","Latvia","Liechtenstein","Lithuania","Luxembourg","Malta","Moldova","Monaco","Montenegro","Netherlands","North Macedonia","Norway","Poland","Portugal","Romania","San Marino","Serbia","Slovakia","Slovenia","Spain","Sweden","Switzerland","Ukraine","United Kingdom","Vatican"]);
 const pinnedFilters=['All','United States','Canada','Europe'];
@@ -622,10 +622,10 @@ function renderFilters(){
   const rest=allShipCountries.filter(c=>c!=='United States'&&c!=='Canada');
   const isRestActive=rest.includes(activeCountry);
   const pinned=pinnedFilters.map(c=>{
-    const label=c==='All'?'🌍 All':c==='Europe'?'🇪🇺 Europe':flagImg(c,'16x12')+c;
+    const label=c==='All'?'🌍 All':c==='Europe'?'🇪🇺 Europe':flagEmoji(c)+c;
     return `<div class="cf ${c===activeCountry?'active':''}" data-country="${c}" onclick="setCountry('${c}')">${label}</div>`;
   }).join('');
-  const desktopPills=rest.map(c=>`<div class="cf cf-desktop ${c===activeCountry?'active':''}" data-country="${c}" onclick="setCountry('${c}')">${flagImg(c,'16x12')+c}</div>`).join('');
+  const desktopPills=rest.map(c=>`<div class="cf cf-desktop ${c===activeCountry?'active':''}" data-country="${c}" onclick="setCountry('${c}')">${flagEmoji(c)+c}</div>`).join('');
   const moreSelect=`<select class="cf-more ${isRestActive?'active':''}" id="more-countries-select" onchange="setCountry(this.value)">
     <option value="" disabled ${!isRestActive?'selected':''}>More countries ▾</option>
     ${rest.map(c=>`<option value="${c}" ${c===activeCountry?'selected':''}>${c}</option>`).join('')}
@@ -650,7 +650,7 @@ function renderStars(n){
 function buildCard(s){
   var h='<div class="scard">';
   h+='<div class="scard-top"><div class="scard-name">'+s.name+'</div>'+(s.verified?'<div class="vbadge">Verified</div>':'')+'</div>';
-  h+='<div class="scard-country">'+flagImg(s.country,'20x15')+s.country+(s.note?' <span style="font-size:11px;color:var(--green);margin-left:6px;">'+s.note+'</span>':'')+'</div>';
+  h+='<div class="scard-country">'+flagEmoji(s.country)+s.country+(s.note?' <span style="font-size:11px;color:var(--green);margin-left:6px;">'+s.note+'</span>':'')+'</div>';
   var judgeLink=s.judgeMe?' &nbsp;<span style="color:var(--green);font-size:10px;">✓ Judge.me</span>':'';
   if(s.reviews>0){
     h+='<div class="stars">'+renderStars(s.rating)+'<span class="rating-text">'+s.rating+' ('+s.reviews+' reviews)'+judgeLink+'</span></div>';

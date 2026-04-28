@@ -11,8 +11,10 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.thepeptideradar.com/"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ThePeptideRadar"/>
-<meta name="twitter:description" content="The trusted directory for peptide suppliers worldwide."/>
+<meta name="twitter:site" content="@ThePeptideRadar"/>
+<meta name="twitter:creator" content="@ThePeptideRadar"/>
+<meta name="twitter:title" content="ThePeptideRadar — Find Trusted Peptide Suppliers by Country"/>
+<meta name="twitter:description" content="The trusted independent directory for verified peptide suppliers worldwide. Community reviewed, no paid placements."/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%234ecf7a' stroke-width='6'/><circle cx='50' cy='50' r='29' fill='none' stroke='%234ecf7a' stroke-width='4' opacity='.6'/><circle cx='50' cy='50' r='14' fill='none' stroke='%234ecf7a' stroke-width='3' opacity='.35'/><line x1='50' y1='50' x2='84' y2='18' stroke='%234ecf7a' stroke-width='5' stroke-linecap='round'/><circle cx='50' cy='50' r='5' fill='%234ecf7a'/></svg>"/>
 <link rel="canonical" href="https://www.thepeptideradar.com/"/>
 <script type="application/ld+json">
@@ -29,6 +31,8 @@
   gtag('js', new Date());
   gtag('config', 'G-Y2XMV46J4N');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -65,7 +69,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 /* HAMBURGER */
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.2s;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.25s,opacity 0.25s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-cta-mobile{display:none;}
 
 /* PAGES */
@@ -298,7 +305,7 @@ footer span{font-size:12px;color:var(--text3);}
   </div>
 
   <div class="section" style="padding-top:0;">
-    <div class="section-tag">Why PeptideRadar</div>
+    <div class="section-tag">Why ThePeptideRadar</div>
     <div class="section-title">The directory you can actually trust</div>
     <div class="features-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
       <div class="feat">
@@ -577,7 +584,7 @@ footer span{font-size:12px;color:var(--text3);}
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 ThePeptideRadar</span>
-    <span style="font-size:11px;color:rgba(240,237,232,0.3);max-width:660px;text-align:right;line-height:1.8;">⚠ <strong style="color:rgba(240,237,232,0.4);">Disclaimer:</strong> PeptideRadar is an independent informational directory only. We do not sell, manufacture, distribute, or endorse any products or suppliers listed. Nothing on this site constitutes medical, legal, or financial advice. Peptides listed may not be approved by the FDA or equivalent regulatory bodies in your jurisdiction and are intended for research purposes only. We make no representations or warranties regarding the accuracy, quality, purity, legality, or safety of any listed supplier or product. PeptideRadar is not liable for any harm, loss, or legal consequence arising from use of this site or purchase from any listed supplier. Laws governing peptides vary by country — users are solely responsible for ensuring compliance with their local laws before purchasing or using any product. By using this site you confirm you are 18+ and have read and accepted this disclaimer. Paid placements, if any, are always clearly labeled and do not affect independent ratings or rankings.</span>
+    <span style="font-size:11px;color:rgba(240,237,232,0.3);max-width:660px;text-align:right;line-height:1.8;">⚠ <strong style="color:rgba(240,237,232,0.4);">Disclaimer:</strong> ThePeptideRadar is an independent informational directory only. We do not sell, manufacture, distribute, or endorse any products or suppliers listed. Nothing on this site constitutes medical, legal, or financial advice. Peptides listed may not be approved by the FDA or equivalent regulatory bodies in your jurisdiction and are intended for research purposes only. We make no representations or warranties regarding the accuracy, quality, purity, legality, or safety of any listed supplier or product. ThePeptideRadar is not liable for any harm, loss, or legal consequence arising from use of this site or purchase from any listed supplier. Laws governing peptides vary by country — users are solely responsible for ensuring compliance with their local laws before purchasing or using any product. By using this site you confirm you are 18+ and have read and accepted this disclaimer. Paid placements, if any, are always clearly labeled and do not affect independent ratings or rankings.</span>
   </div>
 </footer>
 
@@ -604,9 +611,6 @@ function track(event, params){
 }
 
 function trackClick(name, url){
-  const clicks = JSON.parse(localStorage.getItem('clicks')||'{}');
-  clicks[name] = (clicks[name]||0) + 1;
-  localStorage.setItem('clicks', JSON.stringify(clicks));
   track('Clicked Supplier - Visit Site', {supplier_name: name, supplier_url: url});
   window.open(url,'_blank');
 }
@@ -705,7 +709,12 @@ function renderGrid(){
     var matchSearch=s.name.toLowerCase().includes(searchTerm)||normalize(s.name).includes(norm)||fuzzyMatch(searchTerm,s.name)||s.tags.some(function(t){return t.toLowerCase().includes(searchTerm)||normalize(t).includes(norm);})||s.country.toLowerCase().includes(searchTerm)||(s.peptides&&s.peptides.some(function(p){return p.toLowerCase().includes(searchTerm)||normalize(p).includes(norm)||fuzzyMatch(searchTerm,p);}))||(s.catalog&&s.catalog.some(function(p){return p.toLowerCase().includes(searchTerm)||normalize(p).includes(norm)||fuzzyMatch(searchTerm,p);}));
     return matchCountry&&matchSearch;
   });
-  if(!filtered.length){grid.innerHTML='<div style="grid-column:1/-1;padding:5rem 2rem;text-align:center;"><p style="font-size:22px;font-weight:700;margin-bottom:10px;color:var(--text);">Suppliers coming soon</p><p style="font-size:14px;color:var(--text3);max-width:320px;margin:0 auto 1.5rem;">We\'re currently verifying our first batch of suppliers. Check back soon.</p><button class="btn-primary" onclick="showPage(\'landing\')" style="font-size:13px;padding:10px 22px;">Join the waitlist →</button></div>';return;}
+  if(!filtered.length){
+    var emptyTitle=searchTerm?'No results for "'+document.getElementById('search-input').value+'"':activeCountry!=='All'?'No suppliers ship to '+activeCountry+' yet':'No suppliers listed yet';
+    var emptySub=searchTerm?'Try a different peptide name or supplier.':'Be the first to know when new suppliers are added.';
+    grid.innerHTML='<div style="grid-column:1/-1;padding:5rem 2rem;text-align:center;"><p style="font-size:22px;font-weight:700;margin-bottom:10px;color:var(--text);">'+emptyTitle+'</p><p style="font-size:14px;color:var(--text3);max-width:320px;margin:0 auto 1.5rem;">'+emptySub+'</p><button class="btn-primary" onclick="showPage(\'landing\')" style="font-size:13px;padding:10px 22px;">Join the waitlist →</button></div>';
+    return;
+  }
   grid.innerHTML=filtered.map(buildCard).join('');
 }
 
@@ -746,8 +755,19 @@ function showPage(id){
   track('Navigated to Page', {page_name: id});
 }
 
-function toggleNav(){document.getElementById('nav-links').classList.toggle('open');}
-function closeNav(){document.getElementById('nav-links').classList.remove('open');}
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeNav(){
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  var nav=document.getElementById('nav-links');
+  var hb=document.getElementById('hamburger');
+  if(nav.classList.contains('open')&&!nav.contains(e.target)&&!hb.contains(e.target))closeNav();
+});
 
 function toggleReviews(btn){
   const box=btn.nextElementSibling;
@@ -795,6 +815,9 @@ document.getElementById('signup-form').addEventListener('submit',function(e){
 renderFilters();
 renderGrid();
 updateStats();
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.classList.toggle('active',(a.getAttribute('onclick')||'').includes("'landing'"));
+});
 
 document.addEventListener('scroll',function(){
   const btn=document.getElementById('back-to-top');

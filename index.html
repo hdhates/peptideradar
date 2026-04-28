@@ -246,6 +246,7 @@ footer span{font-size:12px;color:var(--text3);}
     <li><a href="#" onclick="showPage('directory');closeNav();return false;">Directory</a></li>
     <li><a href="#" onclick="showPage('contact');closeNav();return false;">Contact</a></li>
     <li class="nav-cta-mobile"><a href="#" onclick="showPage('verify');closeNav();return false;">How We Verify Suppliers</a></li>
+    <li class="nav-cta-mobile"><a href="#" onclick="showPage('signup');closeNav();return false;">List your business</a></li>
   </ul>
   <button class="nav-cta" onclick="showPage('verify')">How We Verify Suppliers</button>
   <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
@@ -256,9 +257,9 @@ footer span{font-size:12px;color:var(--text3);}
 <!-- ══════════════ LANDING PAGE ══════════════ -->
 <div id="landing" class="page active">
   <div class="hero">
-    <div class="badge">Now live — first suppliers listed</div>
+    <div class="badge">4 verified suppliers live</div>
     <h1>Find peptide suppliers you can <em>actually trust</em></h1>
-    <p class="hero-sub">Stop guessing. Find verified, community-reviewed peptide suppliers in your country — in seconds.</p>
+    <p class="hero-sub">The independent directory for verified peptide suppliers — filtered by country, built by the community.</p>
     <div class="cta-group">
       <button class="btn-primary" onclick="showPage('directory')">Browse suppliers →</button>
       <button class="btn-ghost" onclick="showPage('signup')">List your business</button>
@@ -317,7 +318,7 @@ footer span{font-size:12px;color:var(--text3);}
     <p>Browse verified peptide suppliers filtered by country or peptide. <button onclick="suggestSupplier()" style="background:none;border:none;color:var(--green);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;text-decoration:underline;">+ Suggest a supplier</button></p>
     <div class="search-bar">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,0.3)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Search suppliers or peptide types..." id="search-input" oninput="filterSuppliers()"/>
+      <input type="text" placeholder="Search by supplier or peptide..." id="search-input" oninput="filterSuppliers()"/>
     </div>
     <div class="country-filters" id="country-filters"></div>
   </div>

@@ -179,7 +179,7 @@ h1 em{font-style:normal;color:var(--green);}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:rgba(126,232,162,0.5);}
 input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,textarea:-webkit-autofill:focus{-webkit-box-shadow:0 0 0px 1000px var(--bg2) inset;-webkit-text-fill-color:var(--text);transition:background-color 5000s ease-in-out 0s;}
 .form-group textarea{resize:vertical;min-height:120px;}
-.form-group select{appearance:none;cursor:pointer;}
+.form-group select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(240%2C237%2C232%2C0.3)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
 .form-group select option{background:var(--bg2);}
 .submit-btn{width:100%;background:var(--green);color:#0a0a0f;border:none;padding:14px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:opacity 0.2s,transform 0.15s;margin-top:0.5rem;}
 .submit-btn:hover{opacity:0.88;transform:translateY(-1px);}
@@ -260,7 +260,10 @@ footer span{font-size:12px;color:var(--text3);}
   .footer-bottom span:last-child{text-align:left;}
   .email-row{flex-direction:column;}
   .email-row input,.email-row button{width:100%;}
-  .form-group input,.form-group textarea,.form-group select,.search-bar input,.email-row input{font-size:16px;}
+  .form-group input,.form-group textarea,.form-group select,.search-bar input,.email-row input,.cf-select{font-size:16px;}
+  .visit-btn{padding:10px 20px;font-size:13px;}
+  .cf{padding:9px 16px;font-size:13px;}
+  .back-to-top{width:44px;height:44px;font-size:16px;}
 }
 </style>
 </head>
@@ -677,7 +680,7 @@ function buildCard(s){
     h+='<div onclick="event.stopPropagation()" style="margin-bottom:12px;">';
     h+='<div style="font-size:12px;color:var(--text2);font-style:italic;padding:8px 12px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(93,217,138,0.3);border-radius:0 6px 6px 0;margin-bottom:6px;">"'+s.featuredReview+'"</div>';
     if(s.allReviews){
-      h+='<button data-count="'+s.reviews+'" onclick="toggleReviews(this);event.stopPropagation()" style="background:none;border:none;color:var(--green);font-size:11px;cursor:pointer;padding:0;">See all '+s.reviews+' reviews ↓</button>';
+      h+='<button data-count="'+s.reviews+'" onclick="toggleReviews(this);event.stopPropagation()" style="background:none;border:none;color:var(--green);font-size:11px;cursor:pointer;padding:6px 0;">See all '+s.reviews+' reviews ↓</button>';
       h+='<div class="all-reviews" style="display:none;margin-top:8px;max-height:220px;overflow-y:auto;">';
       s.allReviews.forEach(function(r){
         h+='<div style="padding:8px 0;border-bottom:0.5px solid var(--border);">';

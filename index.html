@@ -54,7 +54,8 @@ form button:hover{opacity:0.85;}
 <p class="tagline">The independent directory for verified peptide suppliers — filtered by country, built by the community.</p>
 
 <form id="waitlist-form">
-  <input type="email" placeholder="your@email.com" required/>
+  <input type="hidden" name="subject" value="Coming soon waitlist"/>
+  <input type="email" name="email" placeholder="your@email.com" required/>
   <button type="submit">Notify me</button>
 </form>
 <div class="success" id="success">You're on the list ✓</div>

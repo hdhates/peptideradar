@@ -158,7 +158,7 @@ footer{
 @media(max-width:800px){
   body{padding:32px 20px;align-items:flex-start;}
   .layout{grid-template-columns:1fr;gap:0;margin-bottom:28px;}
-  .radar-col{display:none;}
+  .radar-col{display:flex;margin-bottom:24px;}
   .content-col{text-align:center;}
   .sub{max-width:100%;margin-left:auto;margin-right:auto;}
   .stats{justify-content:center;}
@@ -230,7 +230,7 @@ footer{
   var c = document.getElementById('radar');
   if(!c) return;
   var ctx = c.getContext('2d');
-  var SIZE = 280;
+  var SIZE = window.innerWidth <= 800 ? 200 : 280;
   var dpr = window.devicePixelRatio || 1;
   c.width = SIZE * dpr;
   c.height = SIZE * dpr;

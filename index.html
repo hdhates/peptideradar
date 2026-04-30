@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ThePeptideRadar — Coming Soon</title>
-<meta name="description" content="ThePeptideRadar is launching soon. The trusted directory for verified peptide suppliers worldwide."/>
-<meta property="og:title" content="ThePeptideRadar — Coming Soon"/>
-<meta property="og:description" content="The trusted directory for verified peptide suppliers worldwide. Launching soon."/>
-<meta property="og:image" content="https://www.thepeptideradar.com/og-image.png"/>
-<meta property="og:url" content="https://www.thepeptideradar.com/"/>
+<title>ThePeptideRadar — Join the Waitlist</title>
+<meta name="description" content="ThePeptideRadar is an independent waitlist for finding trusted peptide supplier information by country."/>
+<meta name="google" content="notranslate"/>
+<meta property="og:title" content="ThePeptideRadar — Join the Waitlist"/>
+<meta property="og:description" content="Join the waitlist for early access to ThePeptideRadar."/>
 <meta property="og:type" content="website"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.thepeptideradar.com/og-image.png"/>
-<meta name="twitter:title" content="ThePeptideRadar — Coming Soon"/>
-<meta name="twitter:description" content="The trusted directory for verified peptide suppliers worldwide. Launching soon."/>
+<meta property="og:url" content="https://www.thepeptideradar.com/"/>
+<meta name="theme-color" content="#0a0a0f"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='none' stroke='%234ecf7a' stroke-width='6'/><circle cx='50' cy='50' r='29' fill='none' stroke='%234ecf7a' stroke-width='4' opacity='.6'/><circle cx='50' cy='50' r='14' fill='none' stroke='%234ecf7a' stroke-width='3' opacity='.35'/><line x1='50' y1='50' x2='84' y2='18' stroke='%234ecf7a' stroke-width='5' stroke-linecap='round'/><circle cx='50' cy='50' r='5' fill='%234ecf7a'/></svg>"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2XMV46J4N"></script>
@@ -25,73 +22,238 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{--green:#4ecf7a;--bg:#0a0a0f;--text:#f0ede8;--text2:rgba(240,237,232,0.55);--text3:rgba(240,237,232,0.3);--border:rgba(255,255,255,0.08);}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem 3rem;}
-.radar{position:relative;width:160px;height:160px;margin:0 auto 2.5rem;flex-shrink:0;}
-.radar svg{position:absolute;top:0;left:0;}
-.sweep{transform-origin:80px 80px;animation:sweep 3s linear infinite;}
-@keyframes sweep{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(24px,5vw,36px);letter-spacing:-1px;margin-bottom:0.75rem;}
-.logo span{color:var(--green);}
-.tagline{font-size:clamp(14px,2.5vw,17px);font-weight:300;color:var(--text2);max-width:380px;line-height:1.7;margin-bottom:2.5rem;}
-.badge{display:inline-block;border:0.5px solid rgba(78,207,122,0.35);color:var(--green);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:1.5rem;}
-form{display:flex;gap:8px;max-width:360px;width:100%;}
-form input{flex:1;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.14);border-radius:100px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--text);outline:none;transition:border-color 0.2s;}
-form input::placeholder{color:var(--text3);}
-form input:focus{border-color:rgba(78,207,122,0.5);}
-form button{background:var(--green);color:#0a0a0f;border:none;padding:12px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity 0.2s;}
-form button:hover{opacity:0.85;}
-.success{color:var(--green);font-size:14px;margin-top:0.75rem;display:none;}
-.footer-note{margin-top:2.5rem;font-size:12px;color:var(--text3);}
-.footer-note a{color:var(--text3);text-decoration:none;transition:color 0.2s;}
-.footer-note a:hover{color:var(--green);}
-@media(max-width:480px){form{flex-direction:column;}form button{width:100%;padding:14px;}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#4ecf7a;
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --text:#f0ede8;
+  --muted:rgba(240,237,232,.62);
+  --muted2:rgba(240,237,232,.35);
+  --border:rgba(255,255,255,.1);
+}
+html,body{min-height:100%}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(78,207,122,.14), transparent 34%),
+    linear-gradient(180deg,#0a0a0f 0%,#111118 100%);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+}
+.wrap{width:100%;max-width:680px}
+.logo{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(28px,5vw,44px);
+  font-weight:800;
+  letter-spacing:-1px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-bottom:28px;
+}
+.logo span{color:var(--green)}
+.icon{width:38px;height:38px;flex:0 0 auto}
+.badge{
+  display:inline-block;
+  border:1px solid rgba(78,207,122,.35);
+  color:var(--green);
+  font-size:11px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  padding:6px 16px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(34px,7vw,64px);
+  line-height:1.02;
+  letter-spacing:-1.8px;
+  margin-bottom:18px;
+}
+h1 em{font-style:normal;color:var(--green)}
+.sub{
+  color:var(--muted);
+  font-size:clamp(15px,2.4vw,18px);
+  line-height:1.7;
+  max-width:520px;
+  margin:0 auto 30px;
+}
+.card{
+  background:rgba(17,17,24,.72);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 22px 70px rgba(0,0,0,.35);
+  backdrop-filter:blur(14px);
+}
+.email-row{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+input{
+  flex:1;
+  min-width:0;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  color:var(--text);
+  font:inherit;
+  font-size:16px;
+  padding:15px 18px;
+  outline:none;
+}
+input::placeholder{color:var(--muted2)}
+input:focus{border-color:rgba(78,207,122,.65)}
+button{
+  background:var(--green);
+  color:#0a0a0f;
+  border:0;
+  border-radius:999px;
+  padding:15px 24px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+  white-space:nowrap;
+}
+button:disabled{opacity:.75;cursor:not-allowed}
+.note{
+  color:var(--muted2);
+  font-size:12px;
+  margin-top:14px;
+}
+.success,.error{
+  display:none;
+  margin-top:16px;
+  padding:14px 16px;
+  border-radius:14px;
+  font-size:14px;
+}
+.success{
+  color:var(--green);
+  background:rgba(78,207,122,.1);
+  border:1px solid rgba(78,207,122,.28);
+}
+.error{
+  color:#ff8a8a;
+  background:rgba(255,80,80,.09);
+  border:1px solid rgba(255,80,80,.25);
+}
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-top:26px;
+  color:var(--muted2);
+  font-size:12px;
+}
+.stats strong{color:var(--green)}
+footer{
+  margin-top:28px;
+  color:var(--muted2);
+  font-size:12px;
+  line-height:1.7;
+}
+@media(max-width:560px){
+  body{padding:18px}
+  .card{padding:18px;border-radius:20px}
+  .email-row{flex-direction:column}
+  button,input{width:100%}
+}
 </style>
 </head>
+
 <body>
+<main class="wrap">
+  <div class="logo">
+    <svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#4ecf7a" stroke-width="6"/>
+      <circle cx="50" cy="50" r="29" fill="none" stroke="#4ecf7a" stroke-width="4" opacity=".6"/>
+      <circle cx="50" cy="50" r="14" fill="none" stroke="#4ecf7a" stroke-width="3" opacity=".35"/>
+      <line x1="50" y1="50" x2="84" y2="18" stroke="#4ecf7a" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="5" fill="#4ecf7a"/>
+    </svg>
+    ThePeptide<span>Radar</span>
+  </div>
 
-<div class="radar">
-  <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
-    <circle cx="80" cy="80" r="72" stroke="#4ecf7a" stroke-width="1" opacity="0.12"/>
-    <circle cx="80" cy="80" r="50" stroke="#4ecf7a" stroke-width="1" opacity="0.18"/>
-    <circle cx="80" cy="80" r="28" stroke="#4ecf7a" stroke-width="1.5" opacity="0.28"/>
-    <circle cx="80" cy="80" r="6" fill="#4ecf7a"/>
-  </svg>
-  <svg class="sweep" width="160" height="160" viewBox="0 0 160 160" fill="none">
-    <path d="M80 80 L152 8 A72 72 0 0 0 80 8 Z" fill="#4ecf7a" opacity="0.07"/>
-    <line x1="80" y1="80" x2="152" y2="8" stroke="#4ecf7a" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  </svg>
-</div>
+  <div class="badge">Launching soon</div>
 
-<div class="badge">Launching soon</div>
-<div class="logo">The Peptide<span>Radar</span></div>
-<p class="tagline">The independent directory for verified peptide suppliers — filtered by country, built by the community.</p>
+  <h1>Find peptide info you can <em>actually trust</em></h1>
 
-<form id="waitlist-form">
-  <input type="hidden" name="subject" value="Coming soon waitlist"/>
-  <input type="email" name="email" placeholder="your@email.com" required/>
-  <button type="submit">Notify me</button>
-</form>
-<div class="success" id="success">You're on the list ✓</div>
+  <p class="sub">
+    Join the waitlist for early access to ThePeptideRadar — an independent directory built to help people avoid sketchy sources and find better information.
+  </p>
 
-<div class="footer-note">
-  <a href="https://twitter.com/ThePeptideRadar" target="_blank" rel="noopener">@ThePeptideRadar</a> &nbsp;·&nbsp; peptideradar@gmail.com
-</div>
+  <section class="card">
+    <form id="waitlist-form" action="https://formspree.io/f/mqenzgpn" method="POST">
+      <input type="hidden" name="subject" value="ThePeptideRadar waitlist signup"/>
+      <div class="email-row">
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" inputmode="email" required/>
+        <button type="submit" id="submit-btn">Join the waitlist →</button>
+      </div>
+      <div class="note">No spam. Just launch updates and early access.</div>
+      <div class="success" id="success-msg">You're on the list ✓</div>
+      <div class="error" id="error-msg">Something went wrong. Please try again.</div>
+    </form>
+  </section>
+
+  <div class="stats">
+    <span><strong>Independent</strong> directory</span>
+    <span><strong>Country</strong> focused</span>
+    <span><strong>Community</strong> driven</span>
+  </div>
+
+  <footer>
+    © 2026 ThePeptideRadar · For informational purposes only. Not medical advice.
+  </footer>
+</main>
 
 <script>
-document.getElementById('waitlist-form').addEventListener('submit',function(e){
-  e.preventDefault();
-  var btn=e.target.querySelector('button');
-  btn.textContent='...';btn.disabled=true;
-  fetch('https://formspree.io/f/xzdywbnw',{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}})
-    .then(function(r){
-      if(r.ok){e.target.style.display='none';document.getElementById('success').style.display='block';}
-      else{btn.textContent='Notify me';btn.disabled=false;}
-    }).catch(function(){btn.textContent='Notify me';btn.disabled=false;});
-});
+(function(){
+  var form = document.getElementById('waitlist-form');
+  var btn = document.getElementById('submit-btn');
+  var success = document.getElementById('success-msg');
+  var error = document.getElementById('error-msg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    success.style.display = 'none';
+    error.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        form.reset();
+        success.style.display = 'block';
+        btn.textContent = 'Joined ✓';
+      }else{
+        throw new Error('Formspree error');
+      }
+    }).catch(function(){
+      error.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Join the waitlist →';
+    });
+  });
+})();
 </script>
 </body>
 </html>

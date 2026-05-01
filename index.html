@@ -172,9 +172,9 @@ h1 em{font-style:normal;color:var(--green);}
 .tag{background:rgba(255,255,255,0.04);border:0.5px solid var(--border);color:var(--text2);font-size:11px;padding:3px 10px;border-radius:6px;}
 .scard-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:0.5px solid var(--border);margin-top:auto;}
 .scard-meta{font-size:12px;color:var(--text3);}
-.visit-btn{background:linear-gradient(90deg,#0a0a0f 50%,var(--green) 50%);background-size:200% 100%;background-position:right center;color:#0a0a0f;border:0.5px solid var(--green);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background-position 0.4s ease,color 0.3s,transform 0.15s;letter-spacing:0.1px;}
-.visit-btn-ghost{background:linear-gradient(90deg,var(--green) 50%,transparent 50%);background-size:200% 100%;background-position:right center;color:var(--green);}
-@media(hover:hover){.visit-btn:hover{background-position:left center;color:var(--green);transform:translateY(-1px);}.visit-btn-ghost:hover{background-position:left center;color:#0a0a0f;}}
+.visit-btn{background:var(--green);color:#0a0a0f;border:0.5px solid var(--green);padding:11px 22px;border-radius:100px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform 0.15s ease,box-shadow 0.2s ease,filter 0.2s ease;letter-spacing:0.1px;box-shadow:0 0 0 0 rgba(78,207,122,0.4);}
+.visit-btn-ghost{background:transparent;color:var(--green);}
+@media(hover:hover){.visit-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px 0 rgba(78,207,122,0.35);filter:brightness(1.05);}.visit-btn-ghost:hover{background:var(--green);color:#0a0a0f;}}
 .no-results{text-align:center;padding:4rem 2rem;color:var(--text3);}
 .all-reviews::-webkit-scrollbar{width:4px;}
 .all-reviews::-webkit-scrollbar-track{background:transparent;}
@@ -281,7 +281,7 @@ footer span{font-size:12px;color:var(--text3);}
   .email-row{flex-direction:column;}
   .email-row input,.email-row button{width:100%;}
   .form-group input,.form-group textarea,.form-group select,.search-bar input,.email-row input,.cf-select{font-size:16px;}
-  .visit-btn{padding:10px 20px;font-size:13px;font-weight:700;}
+  .visit-btn{padding:13px 24px;font-size:15px;font-weight:700;}
   .cf{padding:9px 16px;font-size:13px;}
   .back-to-top{width:44px;height:44px;font-size:16px;}
   .cta-banner{padding:2.5rem 1.25rem;}

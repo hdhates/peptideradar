@@ -345,6 +345,7 @@ footer span{font-size:12px;color:var(--text3);}
         <div class="badge">Independent · COA-verified</div>
         <h1>The verified peptide directory — filter by <em>country, peptide, and lab data</em>.</h1>
         <p class="hero-sub">Every supplier here passed independent COA review and lab validation. Compare by what matters to you — shipping, peptides, country, and the data behind them.</p>
+        <div style="font-size:13px;color:var(--green);font-weight:700;letter-spacing:0.3px;margin-bottom:6px;"><span id="hero-verified-count">6</span> verified · most peptide vendors don't make it through.</div>
         <div style="font-size:13px;color:var(--green);font-weight:700;letter-spacing:0.3px;margin-bottom:1.75rem;">No paid rankings. No hidden adjustments. Just data.</div>
         <div class="cta-group">
           <button class="btn-primary" onclick="showPage('directory')">Browse verified suppliers →</button>
@@ -950,6 +951,9 @@ function suggestSupplier(){
 function updateStats(){
   const countryCount = new Set(suppliers.flatMap(s=>s.shipsTo||[s.country])).size;
   document.getElementById('stat-countries').textContent = countryCount + '+';
+  const verifiedCount = suppliers.filter(s=>s.verified).length;
+  const hvc = document.getElementById('hero-verified-count');
+  if(hvc) hvc.textContent = verifiedCount;
 }
 
 function renderFilters(){

@@ -47,7 +47,7 @@
 {"@type":"Question","name":"How does ThePeptideRadar verify suppliers?","acceptedAnswer":{"@type":"Answer","text":"We manually review each supplier's lab testing, third-party COAs (Janoshik, Chromate), product purity, shipping reliability, and community reviews. No supplier pays for placement or ratings."}},
 {"@type":"Question","name":"Are the peptide suppliers listed safe and legitimate?","acceptedAnswer":{"@type":"Answer","text":"Every verified supplier on ThePeptideRadar has been manually vetted. We check for HPLC and mass-spec testing, third-party COAs, endotoxin and heavy metals testing, and require positive community reviews. Suppliers under review or with red flags are clearly marked."}},
 {"@type":"Question","name":"Can I find peptide suppliers that ship to my country?","acceptedAnswer":{"@type":"Answer","text":"Yes. ThePeptideRadar lets you filter suppliers by country to find ones that ship to your location. We list suppliers shipping to the United States, Canada, EU, UK, and many other countries worldwide."}},
-{"@type":"Question","name":"Can suppliers pay to improve their verification or score?","acceptedAnswer":{"@type":"Answer","text":"No. Suppliers cannot pay to influence verification status or scores. Verification is data-driven, based on COA evidence, lab testing, and independent reviews. Featured placements may exist for visibility, but they do not change a supplier's verification status or score."}},
+{"@type":"Question","name":"Can suppliers pay to improve their verification or score?","acceptedAnswer":{"@type":"Answer","text":"No. Suppliers cannot pay to influence verification status or scores. Verification is data-driven, based on COA evidence, lab testing, and independent reviews. We may offer featured placements for additional visibility, but featured status never changes a supplier's verification or score."}},
 {"@type":"Question","name":"What peptides can I find suppliers for?","acceptedAnswer":{"@type":"Answer","text":"The directory includes suppliers of common research peptides such as BPC-157, TB-500, GHK-Cu, CJC-1295, Ipamorelin, Retatrutide, Semaglutide, Tirzepatide, MOTS-c, Melanotan II, Sermorelin, Selank, and Semax."}}
 ]}
 </script>
@@ -343,7 +343,7 @@ footer span{font-size:12px;color:var(--text3);}
       <div class="hero-content-col">
         <div class="badge">Independent · COA-verified</div>
         <h1>Find peptide vendors with <em>verified lab testing</em> and real COAs</h1>
-        <p class="hero-sub">Compare peptide suppliers by COA availability, lab verification, and country. Suppliers cannot pay to influence verification or scores.</p>
+        <p class="hero-sub">Compare peptide suppliers by COA availability, lab verification, and country. Suppliers cannot pay to influence verification status or scores — we may offer featured placements for additional visibility.</p>
         <div class="cta-group">
           <button class="btn-primary" onclick="showPage('directory')">Browse suppliers →</button>
           <a href="#" onclick="showPage('signup');return false;" class="cta-secondary-link">Are you a supplier? List your business →</a>
@@ -361,6 +361,20 @@ footer span{font-size:12px;color:var(--text3);}
     <div class="section-tag">Verification Methodology</div>
     <div class="section-title">How we verify suppliers</div>
     <p style="color:var(--green);font-size:14px;font-weight:700;margin-top:-12px;margin-bottom:24px;letter-spacing:0.2px;">We don't rank opinions — we analyze data.</p>
+    <div style="background:rgba(255,255,255,0.02);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--green);letter-spacing:0.6px;text-transform:uppercase;margin-bottom:4px;">Verification Status</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.55;">Either <strong style="color:var(--text);">Verified</strong> or <strong style="color:var(--text);">Under Review</strong>. Reflects whether documentation has passed our framework.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--green);letter-spacing:0.6px;text-transform:uppercase;margin-bottom:4px;">Verification Score</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.55;">A 0–10 number measuring data confidence — based on COA quality, lab validators, and consistency. Click a card to see the breakdown.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--green);letter-spacing:0.6px;text-transform:uppercase;margin-bottom:4px;">User Ratings</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.55;">Star ratings and reviews from real customers. Independent of verification — they reflect experience, not data.</div>
+      </div>
+    </div>
     <div class="features-grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:1.5rem;">
       <div class="feat">
         <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7ee8a2" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div>
@@ -428,7 +442,7 @@ footer span{font-size:12px;color:var(--text3);}
   </div>
 
   <div class="section" style="padding-top:0;padding-bottom:2rem;">
-    <p style="color:var(--text2);font-size:14px;line-height:1.7;max-width:760px;">PeptideRadar is an independent directory that helps users find peptide vendors with verified lab testing and real COAs. Suppliers are organized by country and evaluated based on transparency, testing data, reviews, and consistency.</p>
+    <p style="color:var(--text2);font-size:14px;line-height:1.7;max-width:760px;"><strong style="color:var(--text);">ThePeptideRadar</strong> is an independent verification directory for peptide suppliers. Suppliers are evaluated using a consistent framework based on COA documentation, third-party lab validators (Janoshik, Chromate, HPLC), batch consistency, and user reviews — never on payment. Users get a single place to compare verified vendors by country, peptide, and Verification Score, with the testing data behind every supplier surfaced transparently.</p>
   </div>
 
   <div class="cta-banner">
@@ -499,8 +513,8 @@ footer span{font-size:12px;color:var(--text3);}
       <div class="tag" style="font-size:12px;padding:5px 12px;">✓ Community reviews</div>
     </div>
     <div style="background:rgba(78,207,122,0.05);border:0.5px solid rgba(78,207,122,0.25);border-radius:10px;padding:14px 16px;margin:1.25rem 0;">
-      <div style="font-size:12px;font-weight:800;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;">Featured Listing available</div>
-      <div style="font-size:13px;color:var(--text2);line-height:1.5;">After verification, suppliers can boost visibility with a Featured Listing — homepage placement and a Featured badge. <strong style="color:var(--text);">Featured status does not influence verification or scores</strong> — those remain data-driven only. Mention "Featured" in your application to get pricing.</div>
+      <div style="font-size:12px;font-weight:800;color:var(--green);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;">Featured (paid visibility)</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.5;">After verification, suppliers can purchase a Featured Listing for homepage placement and a Featured badge. <strong style="color:var(--text);">Featured status is paid visibility only — it never influences verification or scores</strong>, which remain data-driven. Verified listings typically receive more engagement from users. Mention "Featured" in your application for pricing.</div>
     </div>
     <hr class="section-divider"/>
     <form id="signup-form">
@@ -609,7 +623,7 @@ footer span{font-size:12px;color:var(--text3);}
   <div class="form-wrap" style="max-width:640px;">
     <div class="badge" style="margin-bottom:1rem;">Our process</div>
     <h2 style="color:var(--green);margin-bottom:0.5rem;">How We Verify Suppliers</h2>
-    <p style="margin-bottom:2.5rem;">Every supplier on ThePeptideRadar goes through the same process before going live. No shortcuts, no exceptions.</p>
+    <p style="margin-bottom:2.5rem;">Every supplier on ThePeptideRadar is evaluated using the same verification framework before going live. The framework is data-driven and applied consistently — no shortcuts, no exceptions.</p>
 
     <div style="position:relative;display:flex;flex-direction:column;gap:0;">
 
@@ -1059,7 +1073,7 @@ function buildCard(s){
   } else {
     h+='<div class="scard-footer" style="flex-direction:column;align-items:flex-start;gap:10px;">'+meta+'<button class="visit-btn" style="width:100%;" onclick="trackClick(\''+nameEsc+'\',\''+s.url+'\')">Visit site →</button></div>';
   }
-  h+='<div style="font-size:10px;color:var(--text3);margin-top:14px;padding-top:12px;border-top:0.5px solid var(--border);line-height:1.5;">Status based on lab data, COAs, and available verification.</div>';
+  h+='<div style="font-size:10px;color:var(--text3);margin-top:14px;padding-top:12px;border-top:0.5px solid var(--border);line-height:1.5;">Status based on COA data, lab verification, and consistency.</div>';
   h+='</div>';
   return h;
 }

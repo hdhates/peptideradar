@@ -959,13 +959,21 @@ function formatVerifiedDate(d){
 }
 
 function calcTrustScore(s){
-  var score=0;
-  if(s.verified)score+=4;
-  var tags=s.tags||[];
-  if(tags.some(function(t){return t.toLowerCase().indexOf('lab tested')>-1;}))score+=2;
-  if(tags.some(function(t){var l=t.toLowerCase();return l.indexOf('coa')>-1||l.indexOf('janoshik')>-1||l.indexOf('chromate')>-1||l.indexOf('hplc')>-1;}))score+=2;
-  if((s.reviews||0)>0)score+=1;
-  if(s.warning)score=Math.min(score,5.5);
+  if(!s.verified&&!s.warning)return 0;
+  var score=s.verified?7.5:5.5;
+  var tags=(s.tags||[]).map(function(t){return t.toLowerCase();});
+  if(tags.some(function(t){return t.indexOf('lab tested')>-1;}))score+=0.5;
+  var coaCount=0;
+  tags.forEach(function(t){
+    if(t.indexOf('coa')>-1||t.indexOf('janoshik')>-1||t.indexOf('chromate')>-1||t.indexOf('hplc')>-1)coaCount++;
+  });
+  if(coaCount>=1)score+=0.75;
+  if(coaCount>=2)score+=0.5;
+  if(tags.some(function(t){return t.indexOf('endotoxin')>-1||t.indexOf('heavy metal')>-1;}))score+=0.25;
+  if((s.reviews||0)>0)score+=0.25;
+  if((s.reviews||0)>=5)score+=0.25;
+  if((s.rating||0)>=4.5&&(s.reviews||0)>0)score+=0.5;
+  if(s.warning)score=Math.min(score,6.5);
   return Math.max(0,Math.min(10,score));
 }
 
@@ -976,11 +984,18 @@ function buildCard(s){
   h+='<div class="scard-top"><div class="scard-name">'+s.name+newBadge+'</div>'+topBadge+'</div>';
   h+='<div class="scard-country">'+flagEmoji(s.country)+s.country+(s.note&&!s.warning?' <span style="font-size:11px;color:var(--green);margin-left:6px;">'+s.note+'</span>':'')+'</div>';
   if(s.verifiedDate){h+='<div style="font-size:11px;color:var(--text2);margin-top:2px;margin-bottom:12px;">Verified: '+formatVerifiedDate(s.verifiedDate)+'</div>';}
-  var trustScore=calcTrustScore(s);
-  h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 12px;background:rgba(78,207,122,0.06);border:0.5px solid rgba(78,207,122,0.18);border-radius:8px;">';
-  h+='<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:20px;font-weight:800;color:var(--green);line-height:1;min-width:38px;">'+trustScore.toFixed(1)+'</div>';
-  h+='<div style="flex:1;"><div style="font-size:11px;font-weight:700;color:var(--text2);letter-spacing:0.4px;text-transform:uppercase;">Trust Score / 10</div><div style="font-size:10px;color:var(--text3);line-height:1.4;margin-top:1px;">Based on COA quality, lab verification, and consistency.</div></div>';
-  h+='</div>';
+  if(s.verified){
+    var trustScore=calcTrustScore(s);
+    h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 12px;background:rgba(78,207,122,0.06);border:0.5px solid rgba(78,207,122,0.18);border-radius:8px;">';
+    h+='<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:20px;font-weight:800;color:var(--green);line-height:1;min-width:38px;">'+trustScore.toFixed(1)+'</div>';
+    h+='<div style="flex:1;"><div style="font-size:11px;font-weight:700;color:var(--text2);letter-spacing:0.4px;text-transform:uppercase;">Trust Score / 10</div><div style="font-size:10px;color:var(--text3);line-height:1.4;margin-top:1px;">Based on COA quality, lab verification, and consistency.</div></div>';
+    h+='</div>';
+  }else if(s.warning){
+    h+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 12px;background:rgba(245,197,66,0.08);border:0.5px solid rgba(245,197,66,0.3);border-radius:8px;">';
+    h+='<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:18px;font-weight:800;color:#f5c542;line-height:1;">⚠</div>';
+    h+='<div style="flex:1;"><div style="font-size:11px;font-weight:700;color:var(--text2);letter-spacing:0.4px;text-transform:uppercase;">Verification under review</div><div style="font-size:10px;color:var(--text3);line-height:1.4;margin-top:1px;">Awaiting COA validation and additional documentation.</div></div>';
+    h+='</div>';
+  }
   var judgeLink=s.judgeMe?' &nbsp;<span style="color:var(--green);font-size:10px;">✓ Judge.me</span>':'';
   var reviewsIoLink=s.reviewsIoUrl?' &nbsp;<a href="'+s.reviewsIoUrl+'" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:var(--green);font-size:10px;text-decoration:none;">✓ Reviews.io</a>':'';
   if(s.reviews>0){

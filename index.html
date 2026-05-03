@@ -1363,6 +1363,15 @@ updateStats();
 injectSupplierSchema();
 autoDetectCountry();
 maybeShowConsentBanner();
+(function(){
+  var validPages=['landing','directory','contact','signup','verify','privacy','disclaimer'];
+  function applyHash(){
+    var h=(window.location.hash||'').replace('#','');
+    if(h&&validPages.indexOf(h)>-1)showPage(h);
+  }
+  applyHash();
+  window.addEventListener('hashchange',applyHash);
+})();
 document.querySelectorAll('.nav-links a').forEach(function(a){
   a.classList.toggle('active',(a.getAttribute('onclick')||'').includes("'landing'"));
 });

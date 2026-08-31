@@ -67,7 +67,7 @@ h2.section{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;letter
 .card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px;}
 .tag{background:rgba(78,207,122,0.06);border:0.5px solid rgba(78,207,122,0.18);color:var(--text2);font-size:11px;padding:3px 9px;border-radius:6px;}
 .card-cta{margin-top:auto;display:inline-block;background:linear-gradient(90deg,var(--green) 50%,#0a0a0f 50%);background-size:200% 100%;background-position:left center;color:#0a0a0f;border:0.5px solid var(--green);padding:11px 22px;border-radius:100px;font-weight:700;font-size:14px;text-align:center;transition:background-position 0.4s ease,color 0.3s,transform 0.15s,box-shadow 0.2s;}
-.card-cta:hover{background-position:right center;color:var(--green);transform:translateY(-1px);box-shadow:0 4px 14px rgba(78,207,122,0.35);}
+@media(hover:hover){.card-cta:hover{background-position:right center;color:var(--green);transform:translateY(-1px);box-shadow:0 4px 14px rgba(78,207,122,0.35);}}
 details{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:18px 22px;margin-bottom:10px;cursor:pointer;}
 details summary{font-weight:700;font-size:15px;list-style:none;}
 details summary::-webkit-details-marker{display:none;}
@@ -76,7 +76,7 @@ details[open] summary::after{content:"−";}
 details p{margin-top:14px;color:var(--text2);font-size:14px;}
 .cta-row{text-align:center;margin:48px 0 24px;}
 .cta-row a{display:inline-block;background:linear-gradient(90deg,var(--green) 50%,#0a0a0f 50%);background-size:200% 100%;background-position:left center;color:#0a0a0f;border:0.5px solid var(--green);padding:14px 28px;border-radius:100px;font-weight:700;font-size:15px;transition:background-position 0.4s ease,color 0.3s,transform 0.15s,box-shadow 0.2s;}
-.cta-row a:hover{background-position:right center;color:var(--green);transform:translateY(-1px);box-shadow:0 4px 14px rgba(78,207,122,0.35);}
+@media(hover:hover){.cta-row a:hover{background-position:right center;color:var(--green);transform:translateY(-1px);box-shadow:0 4px 14px rgba(78,207,122,0.35);}}
 footer{margin-top:60px;border-top:0.5px solid var(--border);padding:3rem 2.5rem 2rem;background:var(--bg);}
 .footer-main{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2rem;max-width:1100px;margin-left:auto;margin-right:auto;}
 .footer-brand{display:flex;flex-direction:column;gap:6px;max-width:240px;}
@@ -93,7 +93,7 @@ footer{margin-top:60px;border-top:0.5px solid var(--border);padding:3rem 2.5rem 
 .footer-copy{font-size:12px;color:var(--text3);}
 .footer-copy a{color:var(--text3);}
 .footer-copy a:hover{color:var(--green);}
-@media(max-width:640px){main{padding:32px 20px 60px;}.grid{grid-template-columns:1fr;}}
+@media(max-width:640px){nav{padding:0.75rem 1.25rem;}nav .logo{font-size:20px;}.nav-links{gap:1rem;}.nav-links a{font-size:12px;}.nav-links li:last-child{display:none;}main{padding:32px 20px 60px;}.grid{grid-template-columns:1fr;}.card-cta{display:block;text-align:center;}}
 
 /* UX: keyboard focus rings */
 :focus{outline:none;}
@@ -207,3 +207,7 @@ html{scroll-padding-top:80px;}
 </footer>
 </body>
 </html>
+
+
+
+

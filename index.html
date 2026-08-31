@@ -45,7 +45,8 @@
 {"@type":"ListItem","position":8,"item":{"@type":"Organization","name":"Research Peptides Europe","url":"https://researchpeptideseurope.com/","address":{"@type":"PostalAddress","addressCountry":"Spain"}}},
 {"@type":"ListItem","position":9,"item":{"@type":"Organization","name":"CNC BioLabs","url":"https://cncbiolabs.com/","address":{"@type":"PostalAddress","addressCountry":"Canada"}}},
 {"@type":"ListItem","position":10,"item":{"@type":"Organization","name":"Echo Peptides","url":"https://echopeptides.co/","address":{"@type":"PostalAddress","addressCountry":"United States"}}},
-{"@type":"ListItem","position":11,"item":{"@type":"Organization","name":"X Peptides","url":"https://xpeptides.ca/","address":{"@type":"PostalAddress","addressCountry":"Canada"}}}
+{"@type":"ListItem","position":11,"item":{"@type":"Organization","name":"X Peptides","url":"https://xpeptides.ca/","address":{"@type":"PostalAddress","addressCountry":"Canada"}}},
+{"@type":"ListItem","position":12,"item":{"@type":"Organization","name":"C Suite Biologics","url":"https://csuitebiologics.com","address":{"@type":"PostalAddress","addressCountry":"United States"}}}
 ]}
 </script>
 <script type="application/ld+json">
@@ -498,6 +499,9 @@ footer span{font-size:12px;color:var(--text3);}
   #consent-banner > div{flex-direction:column;align-items:stretch;gap:0.75rem;}
   #consent-banner > div > div:last-child{display:grid !important;grid-template-columns:1fr 1fr;}
   .verify-body{padding-left:0 !important;}
+  .peptide-filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px;}
+  .peptide-filters::-webkit-scrollbar{display:none;}
+  .peptide-filters .filter-row-label{flex-basis:auto;flex-shrink:0;}
 }
 
 /* UX: keyboard focus rings (only show on keyboard nav, not click) */
@@ -1031,6 +1035,11 @@ const suppliers = [
   {name:"CNC BioLabs",country:"Canada",flag:"🇨🇦",rating:5,reviews:0,tags:["Lab Tested","3rd Party COA","Endotoxin Tested"],peptides:["Retatrutide","BPC-157","TB-500","GHK-Cu","Tesamorelin","MOTS-c","NAD+"],catalog:["Retatrutide","BPC-157","TB-500","Thymosin Beta-4","GHK-Cu","Copper Peptide","Tesamorelin","MOTS-c","MOTS-C","NAD","NAD+","KPV","5-Amino-1MQ","FOXO4-DRI","Cerebrolysin"],shipping:"Canada: Express ~2 days",verified:true,verifiedDate:"2026-05",isNew:true,url:"https://cncbiolabs.com/",note:"Canada only",shipsTo:["Canada"]},
   {name:"Echo Peptides",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:["Partial Lab Testing"],peptides:["Tirzepatide","Retatrutide","Semaglutide","BPC-157","TB-500"],catalog:["Tirzepatide","Retatrutide","Semaglutide","BPC-157","TB-500"],shipping:"See echopeptides.co for details",verified:false,isNew:true,url:"https://echopeptides.co/",shipsTo:["United States"]},
   {name:"X Peptides",country:"Canada",flag:"🇨🇦",rating:5,reviews:0,tags:[],peptides:[],catalog:[],shipping:"See xpeptides.ca for details",verified:false,warning:true,isNew:true,url:"https://xpeptides.ca/",shipsTo:["Canada"]},
+  {name:"Secra Labs",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:["Lab Tested","HPLC Tested","MS Tested","COA Available"],peptides:["BPC-157","GHK-Cu","CJC-1295 / Ipamorelin","Retatrutide","GLP-3"],catalog:["BPC-157","GHK-Cu","CJC-1295 no DAC & Ipamorelin Blend","CJC-1295 No DAC","Retatrutide","GLP-3 RT","GLP-2 TRZ","GLP-1 SM","TB-500","BPC-157 & TB-500 Blend","Melanotan II","Melanotan 2","MT-2","Ipamorelin","Tesamorelin","KLOW Blend"],shipping:"USA: 2-5 days · Same-day dispatch",verified:false,isNew:true,url:"https://secralabs.com",note:"COA via Freedom Diagnostics",shipsTo:["United States"]},
+  {name:"C Suite Biologics",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:["Lab Tested","Chromate Tested","COA on file (lab source)"],peptides:["Tirzepatide","Retatrutide","BPC-157","GHK-Cu","Tesamorelin"],catalog:["Tirzepatide","Retatrutide","GHK-Cu","BPC-157","TB-500","Thymosin Beta-4","Tesamorelin","CJC-1295 no DAC & Ipamorelin Blend","MOTS-c","MOTS-C","PT-141","Bremelanotide","Melanotan II","Melanotan 2","MT-2","Semax","Selank","KPV","Kisspeptin-10","KLOW Blend","GLOW 70 Blend"],shipping:"USA: see csuitebiologics.com",verified:true,verifiedDate:"2026-08",isNew:true,url:"https://csuitebiologics.com",coaCount:21,coaSource:"Chromate",shipsTo:["United States"]},
+  {name:"Modified Aminos",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:["Lab Tested","COA Available"],peptides:["BPC-157","GHK-Cu","CJC-1295 / Ipamorelin","GLP-3"],catalog:["BPC-157","GHK-Cu","CJC-1295 no DAC & Ipamorelin Blend","GLP-3 RT","GLP-2 TRZ"],shipping:"USA: 1 business day dispatch · Houston TX",verified:false,isNew:true,url:"https://modifiedaminos.shop/",note:"130+ public COA records",shipsTo:["United States"]},
+  {name:"Peps In Bulk",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:["Lab Tested","HPLC Tested","MS Tested"],peptides:["Retatrutide","Tirzepatide","Semaglutide","BPC-157","TB-500"],catalog:["Retatrutide","Tirzepatide","Semaglutide","BPC-157","TB-500","GHK-Cu","Melanotan II","Melanotan 2","MT-2"],shipping:"International: 1-2 weeks",verified:false,isNew:true,url:"https://pepsinbulk.com",note:"Vials + pre-filled pens",shipsTo:["United States","United Kingdom","Canada","Australia","New Zealand"]},
+  {name:"Better Life Aminos",country:"United States",flag:"🇺🇸",rating:5,reviews:0,tags:[],peptides:["Retatrutide","Tirzepatide","GHK-Cu","Tesamorelin","NAD+"],catalog:["Retatrutide","Tirzepatide","GHK-Cu","Tesamorelin","NAD+","NAD"],shipping:"USA: 3-9 days",verified:false,warning:true,isNew:true,url:"https://betterlifeaminos.com/",shipsTo:["United States"]},
 ];
 
 
@@ -1220,7 +1229,12 @@ function supplierAngle(s){
     'Research Peptides Europe':'EU-wide shipping + public test data',
     'CNC BioLabs':'Canada-based · Express 2-day shipping',
     'Echo Peptides':'US-based · GLP-1 focused catalog',
-    'X Peptides':'Canada-based · Data pending'
+    'X Peptides':'Canada-based · Data pending',
+    'Secra Labs':'US-based · HPLC + MS · Same-day dispatch',
+    'C Suite Biologics':'21 Chromate COAs · Full catalog verified',
+    'Modified Aminos':'US-based · 130+ public COA records',
+    'Peps In Bulk':'Large catalog · Vials + pre-filled pens',
+    'Better Life Aminos':'US-based · Data pending'
   };
   return angles[s.name] || 'Supplier data available';
 }
@@ -1236,7 +1250,12 @@ function clickReason(s){
     'Research Peptides Europe':'Spain-based with a public third-party test results page, EU-wide shipping via FedEx and UPS, and a focused catalog of high-demand research peptides.',
     'CNC BioLabs':'Canada-based with third-party COAs, endotoxin testing, and a focused catalog covering GLP-1s, longevity peptides, and popular research compounds. Express domestic shipping across Canada.',
     'Echo Peptides':'US-based research peptide storefront with a GLP-1-focused catalog including Tirzepatide, Retatrutide, and Semaglutide alongside BPC-157 and TB-500. Partial lab testing on some products.',
-    'X Peptides':'Canada-based peptide supplier. Full catalog and lab data pending — listing will be updated once documentation is received.'
+    'X Peptides':'Canada-based peptide supplier. Full catalog and lab data pending — listing will be updated once documentation is received.',
+    'Secra Labs':'US-based with HPLC and mass spectrometry COAs published via Freedom Diagnostics, same-day dispatch, and a 21-product catalog covering popular recovery, GLP-1, and copper peptides.',
+    'C Suite Biologics':'US-based with 21 publicly listed Chromate report IDs — each with a verifiable access code — spanning Tirzepatide, Retatrutide, BPC-157, GHK-Cu, MOTS-c, Semax, Selank, and more.',
+    'Modified Aminos':'US-based, Houston TX. Claims a public COA library of 130+ records with lot-level detail including report issuer, test date, and method. Full data review in progress.',
+    'Peps In Bulk':'US-based with a large catalog spanning GLP-1s, recovery, growth, and nootropic peptides — available as 10-vial packs and pre-filled pens. HPLC and MS testing claimed per batch.',
+    'Better Life Aminos':'US-based research peptide supplier. Lab testing documentation available where provided. Full data pending — listing will be updated as documentation is reviewed.'
   };
   return reasons[s.name] || 'Supplier listing includes available transparency signals and shipping details.';
 }
